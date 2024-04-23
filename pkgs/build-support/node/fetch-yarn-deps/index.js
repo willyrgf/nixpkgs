@@ -88,9 +88,8 @@ const isGitUrl = pattern => {
 }
 
 const downloadPkg = (pkg, verbose) => {
-	const [ name, spec ] = pkg.key.split('@', 2);
-	if (spec.startsWith('file:')) {
-		console.info(`ignoring relative file:path dependency "${spec}"`)
+	if (pkg.key.includes('@file:')) {
+		console.info(`ignoring relative file:path dependency "${pkg.key}"`)
 		return
 	}
 
